@@ -1,15 +1,38 @@
 using UnityEngine;
 public class Invaders_Spawn : MonoBehaviour
 {
-    public GameObject enemyS_Prefab;
     public GameObject enemy1_Prefab;
     public GameObject enemy2_Prefab;
     public GameObject enemy3_Prefab;
     float leftDir = -9f;
-    float rightDir = 9f;
-    float timer = 0f;
-    float enemyCount;
+    //float rightDir = 9f;
+    //float timer = 0f;
+    //float enemyCount;
     public float count = 0;
+
+    //public GameObject enemyS_Prefab;
+    float timer = 0f;
+    bool movingRight = true;
+    float speed = 0.5f;
+
+    //void Update()
+    //{
+    //    timer += Time.deltaTime;
+    //    if (timer >= 15f)
+    //    {
+    //        SpawnSpecial();
+    //        timer = 0f;
+    //    }
+    //}
+
+
+    //void SpawnSpecial()
+    //{
+    //    Vector3 position = new Vector3(transform.position.x, 6f, 0f);
+    //    GameObject special = Instantiate(enemyS_Prefab, position, Quaternion.identity);
+    //    Debug.Log("Special enemy has been spotted!");
+    //    Destroy(special, 10f);
+    //}
 
     void Start()
     {
@@ -19,15 +42,6 @@ public class Invaders_Spawn : MonoBehaviour
         Debug.Log("Enemy2 row has appeared!");
         SpawnRow(enemy3_Prefab, 3f);
         Debug.Log("Enemy3 row has appeared!");
-    }
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if(timer >= 15f)
-        {
-            SpawnSpecial();
-            timer = 0f;
-        }
     }
     void SpawnRow(GameObject prefab, float y)
     {
@@ -42,13 +56,5 @@ public class Invaders_Spawn : MonoBehaviour
             Instantiate(prefab, position, Quaternion.identity);
             count++;
         }
-    }
-    void SpawnSpecial()
-    {
-        float x = Random.Range(leftDir, rightDir);
-        Vector3 position = new Vector3(x, 6f, 0f);
-        GameObject special = Instantiate(enemyS_Prefab, position, Quaternion.identity);
-        Debug.Log("Special enemy has been spotted!");
-        Destroy(special, 5f);
     }
 }

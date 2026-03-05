@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class Enemy : MonoBehaviour
     bool movingRight = true;
     public static float SpeedMultiplier = 1f;
 
+    public GameObject bulletPrefab;
+    public Transform shootOffsetTransform;
 
     Invaders_Spawn iS;
+
+    float timer = 0f;
 
 
     void Awake()
@@ -31,6 +36,31 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         move();
+
+        GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
+        //Debug.Log("Bang!");
+
+        // todo - destroy the bullet after 3 seconds
+        Destroy(shot, 3f);
+        // todo - trigger shoot animation
+        GetComponent<Animator>().SetTrigger("Shot_Trigger");
+        //int shoot = Random.Range(0, 100);
+
+        //timer += Time.deltaTime;
+        //if (timer >= 5f)
+        //{
+        //    if (shoot == 67)
+        //    {
+        //        GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
+        //        //Debug.Log("Bang!");
+
+        //        // todo - destroy the bullet after 3 seconds
+        //        Destroy(shot, 3f);
+        //        // todo - trigger shoot animation
+        //        GetComponent<Animator>().SetTrigger("Shot_Trigger");
+        //    }
+        //    timer = 0f;
+        //}
     }
 
     void descend()

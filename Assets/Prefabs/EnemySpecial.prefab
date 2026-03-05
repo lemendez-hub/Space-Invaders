@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6219150873056366773}
   - component: {fileID: 5432124297707338213}
   - component: {fileID: 8049301431740115839}
+  - component: {fileID: 1361661543179646578}
   m_Layer: 0
   m_Name: EnemySpecial
   m_TagString: EnemyS
@@ -161,3 +162,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1361661543179646578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456571774446295666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0200b9fe73f65844d85f00afaf0b2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Invaders_Special
+  enemyS_Prefab: {fileID: 0}

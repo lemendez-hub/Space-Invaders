@@ -256,6 +256,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600087373}
   m_CullTransparentMesh: 1
+--- !u!1 &628502740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628502742}
+  - component: {fileID: 628502741}
+  m_Layer: 0
+  m_Name: ss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &628502741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628502740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 298e7043f3e689440ab47ec541686554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::spawner
+  enemyS_Prefab: {fileID: 2456571774446295666, guid: 9d529cbbd8cad374fb141c5da22eca64, type: 3}
+--- !u!4 &628502742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628502740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969130908
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,10 +925,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3a7fc3f4d9f7445928e73159f5bf0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Invaders_Spawn
-  enemyS_Prefab: {fileID: 2456571774446295666, guid: 9d529cbbd8cad374fb141c5da22eca64, type: 3}
   enemy1_Prefab: {fileID: 657149845826525762, guid: c9dd637e6187bae4d9a780eca88b65c9, type: 3}
   enemy2_Prefab: {fileID: 3893805416851132969, guid: c93bda650f80cb94f9ab5158bdbf2fc2, type: 3}
   enemy3_Prefab: {fileID: 2717486943401089968, guid: d8698a2bff5f241438d7bacbfbc4fd52, type: 3}
+  count: 0
 --- !u!1 &1631970582
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +945,7 @@ GameObject:
   - component: {fileID: 1631970588}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1803,3 +1848,4 @@ SceneRoots:
   - {fileID: 1836117959}
   - {fileID: 1394362905}
   - {fileID: 1877610932}
+  - {fileID: 628502742}

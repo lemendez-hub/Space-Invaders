@@ -2,31 +2,27 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    int count = 0;
     int maxHP = 10;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    //void Start()
-    //{
-        
-    //}
+    public int currentHP;
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-
-    void OnCollisionEnter2D(Collision2D collider)
+    void Start()
     {
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        currentHP = maxHP;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
-            count++;
-            Debug.Log(count);
-            Destroy(collider.gameObject);
+            currentHP--;
+            Debug.Log(currentHP);
+
+            Destroy(collision.gameObject);
+
+            if (currentHP <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
-        if(count == maxHP)
-        {
-            Destroy(gameObject);
-        } 
     }
 }
