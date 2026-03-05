@@ -5,9 +5,12 @@ public class Invaders_Spawn : MonoBehaviour
     public GameObject enemy1_Prefab;
     public GameObject enemy2_Prefab;
     public GameObject enemy3_Prefab;
-    float leftDir = -13f;
-    float rightDir = 13f;
+    float leftDir = -9f;
+    float rightDir = 9f;
     float timer = 0f;
+    float enemyCount;
+    public float count = 0;
+
     void Start()
     {
         SpawnRow(enemy1_Prefab, 5f);
@@ -28,13 +31,16 @@ public class Invaders_Spawn : MonoBehaviour
     }
     void SpawnRow(GameObject prefab, float y)
     {
-        int count = 27;
-        float spacing = 1;
-        for(int i = 0; i < count; i++)
+        int enemyCount = 10;
+        float spacing = 1f;
+
+        for (int i = 0; i < enemyCount; i++)
         {
             float x = leftDir + i * spacing;
             Vector3 position = new Vector3(x, y, 0f);
+
             Instantiate(prefab, position, Quaternion.identity);
+            count++;
         }
     }
     void SpawnSpecial()

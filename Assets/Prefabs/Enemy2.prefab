@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8279167536635698612}
   - component: {fileID: 249381648801367828}
-  - component: {fileID: 1219895283421966232}
   - component: {fileID: 3101136896064300993}
   - component: {fileID: 7950482978444386008}
+  - component: {fileID: -580006048222535687}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy2
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13, y: 4, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,32 +69,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0018100142, y: -0.0018098652}
+  m_Offset: {x: 0.009602189, y: -0.0018098056}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.09, y: 0.08}
+    oldSize: {x: 2.370382, y: 1.7800001}
     newSize: {x: 0.09, y: 0.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.09863067, y: 0.08777088}
+  m_Size: {x: 2.3790576, y: 1.7812085}
   m_EdgeRadius: 0
---- !u!114 &1219895283421966232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3893805416851132969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796aad014e2107342a60ed88af81c745, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  ticClip: {fileID: 0}
-  tacClip: {fileID: 0}
 --- !u!212 &3101136896064300993
 SpriteRenderer:
   serializedVersion: 2
@@ -144,7 +130,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2106150032, guid: cf9168b093d18ec49820bfcaeecd5de5, type: 3}
+  m_Sprite: {fileID: -347933877, guid: 7a45eae226f601648b2971b5641dcb74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -176,3 +162,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-580006048222535687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893805416851132969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796aad014e2107342a60ed88af81c745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy

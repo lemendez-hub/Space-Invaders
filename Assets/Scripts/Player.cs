@@ -20,11 +20,11 @@ public class Player : MonoBehaviour
     {
 
         float movementX = 0f;
-        if (Keyboard.current.aKey.isPressed)
+        if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
         {
             movementX = movementX - 1f;
         }
-        if(Keyboard.current.dKey.isPressed)
+        if(Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
             movementX = movementX + 1f;
         }
