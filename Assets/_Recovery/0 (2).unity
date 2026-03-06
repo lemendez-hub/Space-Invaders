@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 291669181}
   - component: {fileID: 291669180}
   m_Layer: 0
-  m_Name: KeptScores
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 1342510529}
   - component: {fileID: 1342510528}
   m_Layer: 0
-  m_Name: ScoresText
+  m_Name: Scores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

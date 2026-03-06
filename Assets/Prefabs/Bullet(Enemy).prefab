@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4152164770854160841}
   - component: {fileID: 2688964622928284222}
   - component: {fileID: 3024172742699968737}
-  - component: {fileID: 1803903807891293073}
-  m_Layer: 6
-  m_Name: BulletE
+  - component: {fileID: 3154185730734365656}
+  m_Layer: 8
+  m_Name: Bullet(Enemy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 134646945d8bce84bbec1b5d55392ae9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1803903807891293073
+--- !u!114 &3154185730734365656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,4 +178,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9114a7bd86e673e429df7d2c5a8ec6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
-  speed: 5

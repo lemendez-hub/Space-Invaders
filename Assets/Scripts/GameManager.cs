@@ -1,71 +1,53 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    //public TextMeshProUGUI highScoreText;
-
-    int score = 0;
-    //int highScore = 0;
+    public TextMeshProUGUI scoreText; // Score Text to update
 
 
-    Invaders_Spawn anti;
-    Enemy es;
-
-    bool did18;
-    bool did12;
-    bool did6;
+    Invaders_Spawner iS; // To access Invaders_Spawn class
 
     void Awake()
     {
-        anti = FindFirstObjectByType<Invaders_Spawn>();
-        es = FindFirstObjectByType<Enemy>();
+        iS = FindFirstObjectByType<Invaders_Spawner>(); // Instance for Invaders_Spawn
     }
 
-
-
-    void Start()
-    {
-
-        //scoreText.text = "Score: " + score.ToString("D4");
-
-        // todo - sign up for notification about enemy death 
-        Enemy.OnEnemyDied += OnEnemyDied;
-    }
+    //void Start()
+    //{
+    //    // todo - sign up for notification about enemy death
+    //    //Enemy.OnEnemyDied += OnEnemyDied;
+    //}
 
     void Update()
     {
-        scoreText.text = "Score: " + score.ToString("D4");
-
-        if (!did18 && anti.count <= 18) { Enemy.SpeedMultiplier = 3f; did18 = true; }
-        if (!did12 && anti.count <= 12) { Enemy.SpeedMultiplier = 6f; did12 = true; }
-        if (!did6 && anti.count <= 6) { Enemy.SpeedMultiplier = 9f; did6 = true; }
+        if(iS.count <= 45) // If total enemy count is less than or equal to 45, speed increases once
+        {
+            Enemy.speed = 1f; // Set speed to 1
+        }
+        if(iS.count <= 30) // If total enemy count is less than or equal to 30, speed increases once
+        {
+            Enemy.speed = 2f; // Set speed to 4
+        }
+        if(iS.count <= 15) // If total enemy count is less than or equal to 15, speed increases once
+        {
+            Enemy.speed = 4f; // Set speed to 8;
+        }
+        if (iS.count == 0)
+        {
+            Enemy.speed = 0.5f;
+            SceneManager.LoadScene("Menu"); // When enemy count is 0, go back to Menu
+        }
     }
-
-
-
-
-    //highScoreText.text = "HI-SCORE: " + highScore.ToString("D4");
-
-    //if(score > highScore)
+    
+    //void OnDestroy()
     //{
-    //    highScore = score;
+    //    Enemy.OnEnemyDied -= OnEnemyDied;
     //}
-
-
-    void OnDestroy()
-    {
-        Enemy.OnEnemyDied -= OnEnemyDied;
-    }
-
-    void OnEnemyDied(float score)
-    {
-        Debug.Log($"Killed enemy worth {score}");
-    }
-
-    public void addScore(int points)
-    {
-        score += points;
-    }
+    
+    //void OnEnemyDied(float score)
+    //{
+    //    Debug.Log($"Killed enemy worth {score}");
+    //}
 }

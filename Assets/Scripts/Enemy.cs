@@ -1,140 +1,109 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
-    //public AudioClip ticClip;
-    //public AudioClip tacClip;
-
-    public delegate void EnemyDiedFunc(float points);
-    public static event EnemyDiedFunc OnEnemyDied;
-
-    public float speed = 0.5f;
-    float rBoundary = 9f;
-    float lBoundary = -9f;
-    bool movingRight = true;
-    public static float SpeedMultiplier = 1f;
-
-    public GameObject bulletPrefab;
-    public Transform shootOffsetTransform;
-
-    Invaders_Spawn iS;
-
-    float timer = 0f;
-
-
+    //public delegate void EnemyDiedFunc(float points);
+    //public static event EnemyDiedFunc OnEnemyDied;
+    
+    public static float speed = 0.5f; // Speed of enemy
+    public float speedToSee = speed; // This is just to see speed in inspector, has no use
+    
+    float rBoundary = 9f; // Max right distance for an enemy
+    float lBoundary = -9f; // Max left distance for an enemy
+    
+    bool movingRight = true; // If enemy is moving right
+    
+    float timer = 0f; // Timer used for enemy attack time
+    
+    //float moveTimer = 0; // Timer used for enemy movemnt
+    
+    public GameObject bulletPrefab; // Reference for a bullet prefab
+    public Transform shootOffsetTransform; // Reference for shooting position of bullet
+    
+    Invaders_Spawner iS; // To get access to Invaders_Spawn class
+    
     void Awake()
     {
-        iS = FindFirstObjectByType<Invaders_Spawn>();
+        iS = FindFirstObjectByType<Invaders_Spawner>(); // Instance for Invaders_Spawn
     }
-
-    void Start()
-    {
-
-    }
-
+    
     void Update()
     {
+        timer += Time.deltaTime; // Shooting timer increasing
+        
         move();
-
-        GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
-        //Debug.Log("Bang!");
-
-        // todo - destroy the bullet after 3 seconds
-        Destroy(shot, 3f);
-        // todo - trigger shoot animation
-        GetComponent<Animator>().SetTrigger("Shot_Trigger");
-        //int shoot = Random.Range(0, 100);
-
-        //timer += Time.deltaTime;
-        //if (timer >= 5f)
+        
+        //moveTimer += Time.deltaTime; // Movement timer increasing
+        
+        //if(moveTimer >= stepInterval) // Every 2 seconds, enemies will move
         //{
-        //    if (shoot == 67)
-        //    {
-        //        GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
-        //        //Debug.Log("Bang!");
-
-        //        // todo - destroy the bullet after 3 seconds
-        //        Destroy(shot, 3f);
-        //        // todo - trigger shoot animation
-        //        GetComponent<Animator>().SetTrigger("Shot_Trigger");
-        //    }
-        //    timer = 0f;
+        //    move(); // To move 1 floating point number, moves discretely
+        //    moveTimer = 0f; // Reset timer to meet condition again later
         //}
+        
+        int shoot = Random.Range(0, 25); // Random number for enemy to shoot
+        
+        if(timer >= 2f) // Timer reaches 5 seconds, enemy has opportunity to shoot
+        {
+            if(shoot == 5) // If enemy guesses number, enemy shoots
+            {
+                GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity); // Enemy shoots
+                Destroy(shot, 3f); // Destroy enemy bullet after 3 seconds, similar to player
+            }
+            timer = 0f; // Reset timer to meet condition again later
+        }
     }
-
+    
     void descend()
     {
-        transform.Translate(Vector3.down * 1f);
+        transform.Translate(Vector3.down * 1f); // Enemy goes downward by 1 unit
+        //Debug.Log("Enemy Descending!"); // Message to console
     }
-
+    
     void moveLeft()
     {
-        transform.Translate(Vector3.left * speed * SpeedMultiplier * Time.deltaTime);
+        //transform.Translate(Vector3.left * 1f); // Enemy goes left by 1 unit
+        transform.Translate(Vector3.left * speed * Time.deltaTime); // Moving Left
+        //Debug.Log("Enemy Moving Left!"); // Message to console
     }
-
+    
     void moveRight()
     {
-        transform.Translate(Vector3.right * speed * SpeedMultiplier * Time.deltaTime);
+        //transform.Translate(Vector3.right * 1f); // Enemy goes right by 1 unit
+        transform.Translate(Vector3.right * speed * Time.deltaTime); // Moving Right
+        //Debug.Log("Enemy Moving Right!"); // Message to console
     }
-
+    
     void move()
     {
-        if (movingRight)
+        if(movingRight) // If true
         {
-            //transform.Translate(Vector3.right * speed * Time.deltaTime);
-            moveRight();
+            moveRight(); // Move right
         }
-        else
+        else // If false
         {
-            //transform.Translate(Vector3.left * speed * Time.deltaTime);
-            moveLeft();
+            moveLeft(); // Move left
         }
-
-        if (movingRight && transform.position.x >= rBoundary)
+        if(movingRight && transform.position.x >= rBoundary) // If true and max right distance is reached
         {
-            movingRight = false;
-            descend();
+            movingRight = false; // Time to move left
+            descend(); // Move downward
         }
-        if (!movingRight && transform.position.x <= lBoundary)
+        if(!movingRight && transform.position.x <= lBoundary) // If false/moving left and max left distance is reached
         {
-            movingRight = true;
-            descend();
+            movingRight = true; // Time to move right
+            descend(); // Move downward
         }
     }
-
-
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("Ouch!");
-
-        // todo - destroy the bullet
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Bullet")) // If enemy gets hit by a "Bullet"
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            Destroy(collision.gameObject); // Bullet is destroyed
+            Destroy(gameObject); // Destoy enemy
 
-            iS.count--;
-            
-            
-            
-            OnEnemyDied?.Invoke(10);
-
-
-
-
-
-        }
-        // todo - trigger death animation
+            iS.count--; // Decrease enemy count in Invaders_Spawn class
+        } 
     }
-
-    //public void PlayTicSound()
-    //{
-    //    GetComponent<AudioSource>().PlayOneShot(ticClip);
-    //}
-
-    //public void PlayTacSound()
-    //{
-    //    GetComponent<AudioSource>().PlayOneShot(tacClip);
-    //}
 }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6219150873056366773}
   - component: {fileID: 5432124297707338213}
   - component: {fileID: 8049301431740115839}
-  - component: {fileID: 1361661543179646578}
-  m_Layer: 0
+  - component: {fileID: 3060452218178031017}
+  m_Layer: 7
   m_Name: EnemySpecial
   m_TagString: EnemyS
   m_Icon: {fileID: 0}
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 13, y: 6.5, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 308615160396934635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6219150873056366773
@@ -162,7 +163,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1361661543179646578
+--- !u!114 &3060452218178031017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,5 +174,38 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0200b9fe73f65844d85f00afaf0b2fa4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Invaders_Special
-  enemyS_Prefab: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialEnemy_Movement
+  speed: 4
+  bulletPrefab: {fileID: 4326571731128941582, guid: 65b63024aa2e5bd49ad64d2fec48951f, type: 3}
+  shootOffsetTransform: {fileID: 308615160396934635}
+--- !u!1 &7713959341547782191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 308615160396934635}
+  m_Layer: 7
+  m_Name: OffsetS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &308615160396934635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7713959341547782191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8785341481297136967}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
