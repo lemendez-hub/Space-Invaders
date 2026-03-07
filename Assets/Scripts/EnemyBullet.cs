@@ -17,7 +17,8 @@ public class EnemyBullet : MonoBehaviour
             Destroy(collision.gameObject); // Destroy the player
             Destroy(gameObject); // Destory the bullet
 
-            SceneManager.LoadScene("Menu"); // When player dies, go back to Menu
+            SceneManager.LoadScene("Credits"); // When player dies, go back to Menu
         }
     }
+
 }

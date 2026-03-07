@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         if (iS.count == 0)
         {
             Enemy.speed = 0.5f;
-            SceneManager.LoadScene("Menu"); // When enemy count is 0, go back to Menu
+            SceneManager.LoadScene("Credits"); // When enemy count is 0, go back to Menu
         }
     }
     

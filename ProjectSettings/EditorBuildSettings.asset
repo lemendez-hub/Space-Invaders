@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 64f22de5c88199e4cb784aa4acfe172e
   - enabled: 1
-    path: Assets/Scenes/Invaders.unity
+    path: Assets/Scenes/Main_Game.unity
     guid: e83f58d5f3e3daf42b452a711411d2bd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
