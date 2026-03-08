@@ -12,12 +12,17 @@ public class E_EnemyBullet : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            //Destroy(gameObject);
+            //Animator playerAni = collision.gameObject.GetComponent<Animator>();
+            //ani = collision.gameObject.GetComponent<Animator>();
+            //playerAni.SetTrigger("isDead");
+
             Destroy(gameObject);
             //SceneManager.LoadScene("Credits");
-            ani.SetBool("Alive", false);
         }
     }
 }

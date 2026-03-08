@@ -1705,6 +1705,7 @@ GameObject:
   - component: {fileID: 1631970584}
   - component: {fileID: 1631970588}
   - component: {fileID: 1631970589}
+  - component: {fileID: 1631970590}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1875,6 +1876,28 @@ MonoBehaviour:
   speed: 10
   bulletPrefab: {fileID: 2457785739244962049, guid: d4511b14daaa37c468a74ed386b2583f, type: 3}
   shootOffsetTransform: {fileID: 1751036034}
+--- !u!95 &1631970590
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631970582}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d2eece5d5b59944096791ed42898c21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1665380346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,7 +2594,6 @@ SceneRoots:
   - {fileID: 969130910}
   - {fileID: 1672024180}
   - {fileID: 1874918801}
-  - {fileID: 1631970583}
   - {fileID: 1400803325}
   - {fileID: 1726704728}
   - {fileID: 628502742}
@@ -2581,3 +2603,4 @@ SceneRoots:
   - {fileID: 283615077}
   - {fileID: 538982007}
   - {fileID: 1546751211}
+  - {fileID: 1631970583}
