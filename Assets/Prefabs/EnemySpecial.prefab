@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13, y: 6.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 308615160396934635}
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00000047683716, y: 0.00029695034}
+  m_Offset: {x: 0.00000043213367, y: 0.002224043}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -80,7 +80,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.6396828, y: 1.2518275}
+  m_Size: {x: 0.51221263, y: 0.24590406}
   m_EdgeRadius: 0
 --- !u!212 &5432124297707338213
 SpriteRenderer:
@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0200b9fe73f65844d85f00afaf0b2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpecialEnemy_Movement
-  speed: 4
   bulletPrefab: {fileID: 4326571731128941582, guid: 65b63024aa2e5bd49ad64d2fec48951f, type: 3}
   shootOffsetTransform: {fileID: 308615160396934635}
 --- !u!1 &7713959341547782191
@@ -203,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 7713959341547782191}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
