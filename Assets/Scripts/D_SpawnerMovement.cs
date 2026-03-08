@@ -11,25 +11,29 @@ public class D_SpawnerMovement : MonoBehaviour
     float leftBoundary = -9f;
     float timer = 0f;
     bool movingRight = true;
+    bool timeToShoot = false;
     public GameObject bulletPrefab;
     public Transform shootOffsetTransform;
     void Update()
     {
-        timer += Time.deltaTime;
-        move();
-        int shoot = Random.Range(0, 15);
-        if(timer >= 2f)
+        if(C_Spawner.countDown <= 0)
         {
-            if(shoot == 5)
+            timer += Time.deltaTime;
+            move();
+            int shoot = Random.Range(0, 15);
+            if (timer >= 2f)
             {
-                GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
-                Destroy(shot, 3f);
+                if (shoot == 5)
+                {
+                    GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
+                    Destroy(shot, 3f);
+                }
+                timer = 0f;
             }
-            timer = 0f;
-        }
-        if(transform.position.y <= 2.5)
-        {
-            //SceneManager.LoadScene("Credits");
+            if (transform.position.y <= 2.5)
+            {
+                //SceneManager.LoadScene("Credits");
+            }
         }
     }
     void descend()

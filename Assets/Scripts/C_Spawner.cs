@@ -11,7 +11,7 @@ public class C_Spawner : MonoBehaviour
     public TextMeshProUGUI three;
     public TextMeshProUGUI enemyCount;
     float leftBoundary = -9f;
-    float countDown = 4f;
+    public static float countDown = 4f;
     public static int count = 0;
     public int enemyCountInt;
     public static bool spawn = false;
@@ -29,6 +29,13 @@ public class C_Spawner : MonoBehaviour
         if (countDown <= 3f && countDown > 2f)
         {
             three.enabled = true;
+            if(!spawn)
+            {
+                spawn = true;
+                SpawnRow(enemy1Prefab, 5f);
+                SpawnRow(enemy2Prefab, 4f);
+                SpawnRow(enemy3Prefab, 3f);
+            }
         }
         if (countDown <= 2f && countDown > 1f)
         {
@@ -43,13 +50,6 @@ public class C_Spawner : MonoBehaviour
         if (countDown <= 0f)
         {
             one.enabled = false;
-            if(!spawn)
-            {
-                spawn = true;
-                SpawnRow(enemy1Prefab, 5f);
-                SpawnRow(enemy2Prefab, 4f);
-                SpawnRow(enemy3Prefab, 3f);
-            }
         }
     }
     void SpawnRow(GameObject prefab, float y)

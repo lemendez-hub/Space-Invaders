@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 public class E_EnemyBullet : MonoBehaviour
 {
     float speed = 5f;
+    Animator ani;
     void Start()
     {
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.down * speed;
+        ani = GetComponent<Animator>();
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -14,7 +16,8 @@ public class E_EnemyBullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            SceneManager.LoadScene("Credits");
+            //SceneManager.LoadScene("Credits");
+            ani.SetBool("Alive", false);
         }
     }
 }
