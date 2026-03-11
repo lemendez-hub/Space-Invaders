@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - EnemyS
   - Enemy1
   - Enemy2
   - Enemy3
   - Barricade
+  - Bullet
+  - SpecialEnemy
   layers:
   - Default
   - TransparentFX
