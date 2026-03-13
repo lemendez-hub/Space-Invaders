@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class SpecialEnemyMovement : MonoBehaviour
 {
-    float rightBoundary = 11f;
-    float timer = 0f;
-    public static float speed = 1f;
-    bool movingRight = true;
-    public GameObject bulletPrefab;
-    public Transform shootOffsetTransform;
-    Animator ani;
+    float rightBoundary = 11f; // Max distance able to travel before despawning
+    float timer = 0f; // Shooting timer
 
-    private bool isDying = false;
+    public static float speed = 1f; // Enemy speed
+
+    bool movingRight = true; // If enemy is moving
+
+    public GameObject bulletPrefab; // Bullet Prefab
+
+    public Transform shootOffsetTransform; // Bullet spawn position
+
+    public AudioClip shooting; // Audio for shot
+
+    public AudioClip death; // Audio for death
+
+    Animator ani; // Animatior
+
+    private bool isDying = false; // If dead
 
     void Awake()
     {
@@ -19,57 +28,71 @@ public class SpecialEnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (!EnemyBullet.killedPlayer)
+        if(!EnemyBullet.killedPlayer) // If player is not dead
         {
-            timer += Time.deltaTime;
-            move();
-            int shoot = Random.Range(0, 3);
-            if (timer >= 1f)
+            timer += Time.deltaTime; // Timer increasing
+
+            move(); // Moving
+
+            int shoot = Random.Range(0, 3); // Chance to shoot
+
+            if(timer >= 1f) // Has a chance to shoot every second
             {
-                if (shoot == 2)
+                if(shoot == 2) // Chosen number
                 {
-                    GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
-                    Destroy(shot, 3f);
+                    GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity); // Spanws bullet
+
+                    GetComponent<AudioSource>().PlayOneShot(shooting); // Plays audio
+
+                    Destroy(shot, 3f); // Disapears after 3 seconds if it hits nothing
                 }
-                timer = 0f;
+
+                timer = 0f; // Reset timer
             }
         }
     }
 
     void moveRight()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime); // Movement
     }
 
     void move()
     {
-        if (movingRight)
+        if(movingRight)
         {
             moveRight();
         }
 
-        if (!isDying && movingRight && transform.position.x >= rightBoundary)
+        if(!isDying && movingRight && transform.position.x >= rightBoundary)
         {
-            EnemySpawner.count = Mathf.Max(0, EnemySpawner.count - 1);
+            // Dies after reaching boundary
+            EnemySpawner.count = Mathf.Max(0, EnemySpawner.count - 1); 
+
             Destroy(gameObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isDying) return; 
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        if(isDying)
         {
-            isDying = true; 
+            return; // To avoid multiple deaths
+        }
+        
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            isDying = true; // Now dead
 
+            Destroy(collision.gameObject); // Bullet is destroyed
 
-            Destroy(collision.gameObject);
+            EnemySpawner.count = Mathf.Max(0, EnemySpawner.count - 1); // Enemy count decreases
 
-            EnemySpawner.count = Mathf.Max(0, EnemySpawner.count - 1); 
+            ani.SetTrigger("isDead"); // Plays death animation
 
-            ani.SetTrigger("isDead");
-            Destroy(gameObject, 1f);
+            GetComponent<AudioSource>().PlayOneShot(death); // Plays death audio
+
+            Destroy(gameObject, 1f); // Gets destroyed
         }
     }
 }

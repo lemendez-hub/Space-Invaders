@@ -1,16 +1,17 @@
-// Done for now
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class ConditionalSceneChanger : MonoBehaviour
 {
-    float timer = 5f;
+    float timer = 5f; // Total countdown time
+
     void Update()
     {
-        timer -= Time.deltaTime;
-        Debug.Log($"To Main Menu in: {timer}");
-        if(timer <= 0f)
+        timer -= Time.deltaTime; // Counting down
+
+        if(timer <= 0f) // If timer is finished
         {
-            SceneManager.LoadScene("Main_Menu");
+            SceneManager.LoadScene("Main_Menu"); // Change to Main Menu
         }
     }
 }

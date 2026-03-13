@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/6_Scenes/Main_Menu.unity
-    guid: 64f22de5c88199e4cb784aa4acfe172e
+    path: Assets/6_Scenes/Credits_Lose.unity
+    guid: ea87127eb23a185489ae8ee26349e664
+  - enabled: 1
+    path: Assets/6_Scenes/Credits_Win.unity
+    guid: 88e364d618e51984d8db4b5e16fcfcac
   - enabled: 1
     path: Assets/6_Scenes/Main_Game.unity
     guid: e83f58d5f3e3daf42b452a711411d2bd
   - enabled: 1
-    path: Assets/6_Scenes/Credits_Win.unity
-    guid: 88e364d618e51984d8db4b5e16fcfcac
+    path: Assets/6_Scenes/Main_Menu.unity
+    guid: 64f22de5c88199e4cb784aa4acfe172e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
